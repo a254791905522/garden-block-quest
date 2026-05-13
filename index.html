@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Block Quest - Relaxing Sliding Block Puzzle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F4F8F1;
+            color: #2f332d;
+            line-height: 1.6;
+        }
+        .hero {
+            background: linear-gradient(135deg, #EAF6E2 0%, #BFE4CF 52%, #F7D88A 100%);
+            color: #315C36;
+            text-align: center;
+            padding: 64px 20px 52px;
+            border-bottom: 1px solid rgba(49, 92, 54, 0.10);
+        }
+        .hero h1 {
+            font-size: clamp(34px, 7vw, 58px);
+            font-weight: 850;
+            margin-bottom: 10px;
+            letter-spacing: -0.8px;
+        }
+        .hero h1 span { color: #4BAE55; }
+        .hero .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #4e6a49;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .hero .intro {
+            max-width: 680px;
+            margin: 0 auto 24px;
+            color: #455143;
+            font-size: 17px;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(49, 92, 54, 0.12);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            color: #315C36;
+            font-weight: 700;
+        }
+        .section {
+            padding: 52px 20px;
+        }
+        .section h2 {
+            font-size: 30px;
+            color: #315C36;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 20px;
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+        .screenshot-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(52, 82, 45, 0.12);
+            border: 1px solid rgba(49, 92, 54, 0.10);
+        }
+        .screenshot-card img {
+            width: 100%;
+            aspect-ratio: 9 / 19.5;
+            object-fit: cover;
+            display: block;
+            background: #DCEFE3;
+        }
+        .screenshot-card .label {
+            padding: 12px 14px;
+            font-size: 14px;
+            color: #4e5a4b;
+            text-align: center;
+            font-weight: 700;
+        }
+        .features-section { background: #fff; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .feature-item {
+            background: #F4F8F1;
+            border: 1px solid #DCEFD6;
+            border-radius: 14px;
+            padding: 20px;
+        }
+        .feature-item h3 {
+            color: #315C36;
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+        .feature-item p {
+            color: #4d5549;
+            font-size: 15px;
+        }
+        .description-card, .support-card {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 8px 28px rgba(52, 82, 45, 0.10);
+            border: 1px solid rgba(49, 92, 54, 0.10);
+        }
+        .description-card h2, .support-card h2 {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .description-card p, .support-card p, .support-card li {
+            margin-bottom: 14px;
+            color: #444b41;
+        }
+        .support-card h3 {
+            font-size: 18px;
+            color: #315C36;
+            margin: 22px 0 8px;
+        }
+        .support-card ul { margin-left: 20px; }
+        .info-box {
+            background: #315C36;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .info-box h2 {
+            color: #F7D88A;
+            margin-bottom: 20px;
+        }
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px 28px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .info-item strong {
+            display: block;
+            color: #F7D88A;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .info-item span { font-size: 15px; }
+        .footer {
+            text-align: center;
+            padding: 26px 20px;
+            color: #687164;
+            font-size: 14px;
+        }
+        .footer a { color: #315C36; font-weight: 700; }
+        @media (max-width: 700px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .description-card, .support-card { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1><span>Garden Block Quest</span></h1>
+        <p class="subtitle">A relaxing sliding block puzzle for focused minds.</p>
+        <p class="intro">Move blocks, clear the path, and solve handcrafted logic puzzles in a calm garden-themed world. Play offline, improve your move count, and collect stars at your own pace.</p>
+        <div class="badge">50 handcrafted puzzles · iPhone only · No ads · No in-app purchases</div>
+    </header>
+
+    <section class="section screenshots-section">
+        <h2>Gameplay Screenshots</h2>
+        <div class="screenshots-grid">
+            <div class="screenshot-card">
+                <img src="screenshots_65/01_menu.png" alt="Garden Block Quest main menu">
+                <div class="label">Main Menu</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="screenshots_65/02_level_select.png" alt="Level selection screen">
+                <div class="label">Level Select</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="screenshots_65/03_gameplay.png" alt="Sliding block puzzle gameplay">
+                <div class="label">Sliding Puzzle</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="screenshots_65/04_victory.png" alt="Victory screen with stars">
+                <div class="label">Victory Screen</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section features-section">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Slide to Open the Path</h3>
+                <p>Move each block through open spaces and guide the goal piece toward the exit.</p>
+            </div>
+            <div class="feature-item">
+                <h3>50 Handcrafted Levels</h3>
+                <p>Progress from easy warm-ups to expert layouts designed for satisfying logic play.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Star Ratings</h3>
+                <p>Earn up to three stars per puzzle by solving with fewer moves.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Undo and Reset</h3>
+                <p>Try ideas freely, step back from mistakes, or restart a puzzle anytime.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Calm Garden Style</h3>
+                <p>Soft colors, clear blocks, and a peaceful garden backdrop keep the board readable.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Offline and Private</h3>
+                <p>No ads, no purchases, no accounts, and no data collection.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section description-section">
+        <div class="description-card">
+            <h2>About the Game</h2>
+            <p>Garden Block Quest is a single-player sliding block puzzle built around clear rules and thoughtful layouts. Each board asks you to study the space, move pieces in the right order, and open a route to the exit.</p>
+            <p>The game is designed for quick breaks and deeper puzzle sessions alike. Smooth touch controls, readable block colors, move tracking, and star goals make every solved level feel rewarding without adding pressure.</p>
+        </div>
+    </section>
+
+    <section class="section support-section">
+        <div class="support-card">
+            <h2>Support</h2>
+            <p>If you need help, have a question, or want to report an issue, please use the support information below before submitting your request through the app's App Store product page.</p>
+
+            <h3>Common Questions</h3>
+            <ul>
+                <li><strong>Progress is missing:</strong> Progress is stored locally on your iPhone. Deleting the app may remove local progress.</li>
+                <li><strong>Sound or haptics are not working:</strong> Open Settings in the app and confirm Sound and Haptics are enabled. Also check your device volume and silent mode.</li>
+                <li><strong>A puzzle feels stuck:</strong> Use Undo to step back one move, or Reset to restart the current puzzle.</li>
+                <li><strong>Display issue:</strong> Use a supported iPhone running iOS 13.0 or later and update to the latest App Store version.</li>
+            </ul>
+
+            <h3>Request Support</h3>
+            <p>To request support without sharing personal information on this website, open the app's App Store product page and use the available App Store support or review channel with your device model, iOS version, and a short description of the issue.</p>
+        </div>
+    </section>
+
+    <section class="info-box">
+        <h2>App Information</h2>
+        <div class="info-grid">
+            <div class="info-item"><strong>Genre</strong><span>Puzzle / Board</span></div>
+            <div class="info-item"><strong>Compatibility</strong><span>iPhone, iOS 13.0+</span></div>
+            <div class="info-item"><strong>Age Rating</strong><span>4+</span></div>
+            <div class="info-item"><strong>Version</strong><span>1.0.0</span></div>
+            <div class="info-item"><strong>Languages</strong><span>English</span></div>
+            <div class="info-item"><strong>Privacy</strong><span>No Data Collection</span></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 AiTer · <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
